@@ -29,4 +29,3 @@ Discover, explore, and save your favorite recipes from around the world with **S
 
 👨‍💻 Developed by
 Emmanuel Akabike
-Mission-driven Full Stack Developer focused on building technology for social impact.
