@@ -1,30 +1,25 @@
-// src/components/SearchBar.jsx
+
 import React, { useState } from "react";
 
-/**
- * SearchBar Component
- * -------------------
- * Allows the user to type a recipe name and trigger a search.
- * Uses local component state to store the search input value.
- */
+
 const SearchBar = ({ onSearch }) => {
-  // 1️⃣ Define a state variable to hold the user’s input text
+ 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // 2️⃣ Function runs when the search form is submitted
+ 
   const handleSubmit = (e) => {
-    e.preventDefault(); // prevent page reload
+    e.preventDefault();
     if (searchTerm.trim()) {
-      onSearch(searchTerm); // trigger the search passed from parent
-      setSearchTerm(""); // optional: clear input after search
+      onSearch(searchTerm); 
+      setSearchTerm(""); 
     }
   };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex items-center justify-center gap-3 p-4 w-full max-w-md mx-auto"
-    >
+      className="flex items-center justify-center gap-3 p-4 w-full max-w-md mx-auto" 
+          >
       
       <input
         type="text"
