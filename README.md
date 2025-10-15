@@ -1,16 +1,33 @@
-# React + Vite
+# 🍳 Savora — Recipe Finder Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Discover, explore, and save your favorite recipes from around the world with **Savora** — a sleek and modern web app built for food enthusiasts. Whether you’re looking for quick snacks or gourmet meals, Savora helps you find inspiration right from your kitchen.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## React Compiler
+- 🔍 **Smart Recipe Search** — Find recipes from a powerful API by keyword or ingredient.  
+- 📋 **Detailed Recipe View** — View full cooking instructions, ingredients, and nutrition details.  
+- ❤️ **Favorites System** — Save your favorite recipes for easy access anytime.  
+- 🌐 **Responsive Design** — Fully responsive and optimized for desktop and mobile screens.  
+- ⚡ **Fast & Modern UI** — Powered by React + Tailwind + Vite for blazing-fast performance.  
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🧩 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Technology | Purpose |
+|-------------|----------|
+| **React.js** | Frontend framework for building reusable components |
+| **Tailwind CSS** | Utility-first CSS framework for rapid styling |
+| **Vite** | Fast build tool and dev environment |
+| **Recipe API** | External API for fetching real-time recipe data |
+
+---
+
+## ⚙️ Environment Setup
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-username/savora.git
+cd savora
