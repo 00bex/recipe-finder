@@ -2,15 +2,14 @@
 import React, { useState } from "react"; 
 import SearchBar from "./components/SearchBar"; 
 import { fetchRecipes } from "./api/recipeApi"; 
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import RecipeDetails from "./Pages/Recipedetails";
 
 
-const App = () => {
-  const [recipes, setRecipes] = useState([]);
-
-  const [loading, setLoading] = useState(false);
-
- 
-  const [error, setError] = useState("");
+const Home = () => {
+  const [recipes, setRecipes] = useState([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
 
   //Function to handle the search request from SearchBar
   const handleSearch = async (query) => {
@@ -52,18 +51,19 @@ const App = () => {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 w-full max-w-6xl">
         {recipes.map((recipe) => (
-          <div
+          <Link
+            to={`/recipe/${recipe.idMeal}`} // Clicking navigates to details page
             key={recipe.idMeal}
             className="bg-white rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
           >
-            
+            {/* Recipe image */}
             <img
               src={recipe.strMealThumb}
               alt={recipe.strMeal}
               className="w-full h-48 object-cover"
             />
 
-            
+            {/* Recipe info */}
             <div className="p-4">
               <h2 className="text-lg font-semibold text-gray-800 mb-1">
                 {recipe.strMeal}
@@ -72,10 +72,25 @@ const App = () => {
                 {recipe.strCategory} • {recipe.strArea}
               </p>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+   
+    <Router>
+     
+      <Routes>
+      
+        <Route path="/" element={<Home />} />
+
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+      </Routes>
+    </Router>
   );
 };
 
