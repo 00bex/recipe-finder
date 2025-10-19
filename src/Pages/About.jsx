@@ -25,7 +25,7 @@ const About = () => {
             food enthusiasts who share your passion for cooking.
           </p>
           <p className="text-lg leading-relaxed mb-8">
-            At Savora, we believe that cooking is more than just preparing food — 
+            At Savora, we believe that cooking is more than just preparing food,
             it’s a way to share love, culture, and creativity. Our platform brings 
             together the finest recipes and culinary inspiration to help you 
             create memorable meals and experiences.
