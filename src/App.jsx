@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import RecipeDetails from "./Pages/Recipedetails";
 
 
-const Home = () => {
+const App = () => {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
@@ -79,19 +79,6 @@ const Home = () => {
   );
 };
 
-const App = () => {
-  return (
-   
-    <Router>
-     
-      <Routes>
-      
-        <Route path="/" element={<Home />} />
 
-        <Route path="/recipe/:id" element={<RecipeDetails />} />
-      </Routes>
-    </Router>
-  );
-};
 
 export default App;

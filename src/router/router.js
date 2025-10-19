@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../Pages/Home";
 import RecipeDetails from "../Pages/Recipedetails";
+import About from "../Pages/About";
+import Categories from "../Pages/Categories";
 
 
 const router = createBrowserRouter([
@@ -12,6 +14,14 @@ const router = createBrowserRouter([
     {
         path: "/recipe/:id",
         Component: RecipeDetails
+    },
+    {
+        path: "/about",
+        Component: About
+    },
+    {
+        path: "/categories",
+        Component: Categories
     }
 ]);
 export default router;

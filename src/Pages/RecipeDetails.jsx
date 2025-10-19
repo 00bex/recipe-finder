@@ -1,6 +1,4 @@
-// src/pages/RecipeDetails.jsx
 
-// Import React and hooks from React and React Router
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom"; // useParams gets ID from URL
 
