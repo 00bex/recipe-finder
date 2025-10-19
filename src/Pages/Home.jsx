@@ -9,9 +9,9 @@ const Home = () => {
         <>
         
         <Navbar/>
-        <div className="p-6">
-        <h2 className=" text-2xl mx auto"> Your No.1 <span className="text-green-400 font-bold">Food Recipe</span> App for Culinary Inspirations     </h2>
-        <h4 className="" > Explore thousands of recipes for every craving and occassion</h4>     
+        <div className="p-9">
+        <h2 className=" text-5xl mx auto"> Your No.1 <span className="text-green-400 font-bold">Food Recipe</span> App for Culinary Inspirations     </h2>
+        <h4 className="p-5" > Explore thousands of recipes for every craving and occassion</h4>     
         <App/>
         <Footer/>
 

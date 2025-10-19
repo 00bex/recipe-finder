@@ -30,11 +30,9 @@ const App = () => {
   };
 
   return (
-    <div className="min-h-full bg-orange-50  px-4">
+    <div className="min-h-full px-4">
     
-      <h1 className="text-3xl sm:text-4xl font-bold text-orange-600 mt-8 mb-4">
-        Savora 🍲
-      </h1>
+      
 
       <SearchBar onSearch={handleSearch} />
 
