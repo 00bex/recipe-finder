@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import SearchBar from "./components/SearchBar"; 
 import { fetchRecipes } from "./api/recipeApi"; 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import RecipeDetails from "./Pages/Recipedetails";
+import RecipeDetails from "../Pages/RecipeDetails";
 
 
 const App = () => {
