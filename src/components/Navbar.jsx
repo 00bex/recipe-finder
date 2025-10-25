@@ -7,7 +7,7 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav className="bg-orange-500 text-white shadow-md">
+    <nav className=" sticky top-0 bg-orange-500 text-white shadow-md">
       <div className="container mx-auto flex justify-between items-center px-6 py-4">
         <Link to="/" className="text-2xl font-bold">
           Savora 🍲
