@@ -1,5 +1,5 @@
 
-import React, { useState } from "react"; 
+import React, { useState , useEffect } from "react"; 
 import SearchBar from "./components/SearchBar"; 
 import { fetchRecipes } from "./api/recipeApi"; 
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
@@ -10,6 +10,15 @@ const App = () => {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
+
+  const defaultCategories = [
+  "Beef",
+  "Chicken",
+  "Dessert",
+  "Seafood",
+  "Vegetarian",
+];
+
 
   //Function to handle the search request from SearchBar
   const handleSearch = async (query) => {
@@ -29,6 +38,36 @@ const App = () => {
     setLoading(false); 
   };
 
+  useEffect(() => {
+  const loadDefaultRecipes = async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const requests = defaultCategories.map((category) =>
+        fetch(
+          `https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`
+        ).then((res) => res.json())
+      );
+
+      const results = await Promise.all(requests);
+
+      const mixedRecipes = results
+        .flatMap((result) => result.meals || [])
+        .slice(0, 12); // limit total recipes
+
+      setRecipes(mixedRecipes);
+    } catch (err) {
+      setError("Failed to load featured recipes 😔");
+    }
+
+    setLoading(false);
+  };
+
+  loadDefaultRecipes();
+}, []);
+
+
   return (
     <div className="min-h-full px-4">
     
@@ -38,7 +77,7 @@ const App = () => {
 
       {loading && (
         <p className="text-gray-600 mt-4 animate-pulse">
-          Searching recipes...
+          Loading delicious recipes...
         </p>
       )}
 
