@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { fetchRecipes } from "../api/recipeApi";
@@ -21,6 +21,39 @@ const Categories = () => {
   const [recipes, setRecipes] = useState([]); // Recipes fetched from the API
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+
+  useEffect(() => {
+  const loadDefaultVarieties = async () => {
+    setLoading(true);
+    setError("");
+
+    try {
+      const defaultCategories = ["Beef", "Chicken", "Dessert", "Seafood"];
+
+      const requests = defaultCategories.map((category) =>
+        fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${category}`)
+          .then((res) => res.json())
+      );
+
+      const results = await Promise.all(requests);
+
+      const mixedRecipes = results
+        .flatMap((result) => result.meals || [])
+        .slice(0, 12); // limit total recipes
+
+      setRecipes(mixedRecipes);
+      setSelectedCategory("Featured");
+    } catch (err) {
+      setError("Failed to load recipes 😔");
+    }
+
+    setLoading(false);
+  };
+
+  loadDefaultVarieties();
+}, []);
+
+  
 
   const handleCategoryClick = async (category) => {
     setSelectedCategory(category);
@@ -75,7 +108,7 @@ const Categories = () => {
         {/* 🔹 Loading & Error */}
         {loading && (
           <p className="text-gray-500 animate-pulse">
-            Loading recipes for {selectedCategory}...
+            Loading {selectedCategory || "recipes"}...
           </p>
         )}
         {error && <p className="text-red-500">{error}</p>}
