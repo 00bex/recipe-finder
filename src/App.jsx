@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 const App = () => {
-  const [recipes, setRecipes] = useState([])
+  const [categoryRecipes, setCategoryRecipes] = useState({});
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
@@ -55,11 +55,14 @@ const App = () => {
 
       const results = await Promise.all(requests);
 
-      const mixedRecipes = results
-        .flatMap((result) => result.meals || [])
-        .slice(0, 20); // limit total recipes
+     const categorized = {};
 
-      setRecipes(mixedRecipes);
+     defaultCategories.forEach((category, index) => {
+       categorized[category] = results[index]?.meals?.slice(0, 4) || [];
+     });
+
+setCategoryRecipes(categorized);
+
     } catch (err) {
       setError("Failed to load featured recipes 😔");
     }
@@ -88,36 +91,42 @@ const App = () => {
         <p className="text-red-500 font-medium mt-4">{error}</p>
       )}
       
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
-        {recipes.map((recipe) => (
+      <div className="max-w-7xl mx-auto mt-10 space-y-12">
+
+  {defaultCategories.map((category) => (
+    <section key={category}>
+      <h3 className="text-2xl font-bold text-orange-600 mb-4">
+        {category} Recipes
+      </h3>
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+        {categoryRecipes[category]?.map((recipe) => (
           <Link
-            to={`/recipe/${recipe.idMeal}`} // Clicking navigates to details page
+            to={`/recipe/${recipe.idMeal}`}
             key={recipe.idMeal}
-            className="bg-white rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+            className="bg-white rounded-xl shadow-md overflow-hidden hover:scale-[1.02] transition"
           >
-            {/* Recipe image */}
+            {/*Recipe image*/}
             <img
               src={recipe.strMealThumb}
               alt={recipe.strMeal}
               className="w-full h-48 object-cover"
-            />
 
-            {/* Recipe info */}
+            />
+             {/*Recipe info */}
             <div className="p-4">
-              <h2 className="text-lg font-semibold text-gray-800 mb-1">
+              <h2 className="font-semibold text-gray-800">
                 {recipe.strMeal}
               </h2>
-              <p className="text-sm text-gray-500">
-                {recipe.strCategory} • {recipe.strArea}
-              </p>
             </div>
           </Link>
         ))}
       </div>
+    </section>
+  ))}
 
-      </div>
-      
+</div>
+
       
     </div>
   );
