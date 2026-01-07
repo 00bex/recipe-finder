@@ -89,7 +89,7 @@ const App = () => {
       )}
 
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 w-full max-w-6xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 w-full max-w-6xl mx-auto">
         {recipes.map((recipe) => (
           <Link
             to={`/recipe/${recipe.idMeal}`} // Clicking navigates to details page
