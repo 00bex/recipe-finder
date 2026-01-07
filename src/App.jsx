@@ -87,9 +87,9 @@ const App = () => {
       {error && (
         <p className="text-red-500 font-medium mt-4">{error}</p>
       )}
-
       
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 w-full max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
         {recipes.map((recipe) => (
           <Link
             to={`/recipe/${recipe.idMeal}`} // Clicking navigates to details page
@@ -115,6 +115,10 @@ const App = () => {
           </Link>
         ))}
       </div>
+
+      </div>
+      
+      
     </div>
   );
 };
