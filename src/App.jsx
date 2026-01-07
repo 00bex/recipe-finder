@@ -6,17 +6,20 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 
 
+
 const App = () => {
   const [recipes, setRecipes] = useState([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState("")
 
   const defaultCategories = [
+
   "Beef",
   "Chicken",
   "Dessert",
   "Seafood",
   "Vegetarian",
+
 ];
 
 
@@ -54,7 +57,7 @@ const App = () => {
 
       const mixedRecipes = results
         .flatMap((result) => result.meals || [])
-        .slice(0, 12); // limit total recipes
+        .slice(0, 15); // limit total recipes
 
       setRecipes(mixedRecipes);
     } catch (err) {
@@ -77,7 +80,7 @@ const App = () => {
 
       {loading && (
         <p className="text-gray-600 mt-4 animate-pulse">
-          Loading delicious recipes...
+          Loading delicious recipes....
         </p>
       )}
 
