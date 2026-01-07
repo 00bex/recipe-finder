@@ -57,7 +57,7 @@ const App = () => {
 
       const mixedRecipes = results
         .flatMap((result) => result.meals || [])
-        .slice(0, 15); // limit total recipes
+        .slice(0, 20); // limit total recipes
 
       setRecipes(mixedRecipes);
     } catch (err) {
